@@ -1,33 +1,20 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  Pressable
-} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import { Image, NativeBaseProvider, Center } from "native-base";
+import Inicio from './views/Inicio';
+import Emprendimientos from './views/Emprendimientos';
+import Asesorias from './views/Asesorias';
+
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Navigation from './Navigation';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NativeBaseProvider>
-      <SafeAreaView style={styles.fondo}>
-        <View style={{ padding: 110 }}></View>
-        <View style={styles.cuadroIngreso}>
-          <Center>
-            <Image
-              source={require('./src/assets/img/logo.png')} alt='Logo' size="40"
-            />
-          </Center>
-          <Text style={styles.descripcion}>Encuentra empleo, emprendimientos, asesorias y practicas</Text>
-          <Pressable style={styles.btnIngresar}>
-            <Text style={styles.btnTextoIngresar}>Ingresar</Text>
-          </Pressable>
-        </View>
-      </SafeAreaView>
-    </NativeBaseProvider>
+    <Navigation />
   )
 }
 
@@ -39,14 +26,14 @@ const styles = StyleSheet.create({
   cuadroIngreso: {
     backgroundColor: '#FFFFFF',
     height: 700,
-    paddingTop: 70,
+    paddingTop: 100,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30
   },
   descripcion: {
     textAlign: 'center',
     color: '#9586A8',
-    paddingTop: 50,
+    paddingTop: 120,
     fontSize: 20
   },
   btnIngresar: {
