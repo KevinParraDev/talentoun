@@ -110,22 +110,22 @@ const Emprendimientos = () => {
 
                 <View>
                     <Text style={styles.titulosCategorias}>Todo</Text>
-                    <View style={styles.contenedorGeneral}>
-                        {popularItems.map(element => {
-                            return (
-                                <View style={styles.cartaProductoGeneral}>
-                                    <Image
-                                        source={element.ruta} alt={element.title} size="2xl"
-                                        style={styles.productosGeneral}
-                                    />
-                                    <Text style={styles.textoCarta}>{element.title}</Text>
-                                    <View style={styles.cajaPrecioGeneral}>
-                                        <Text style={styles.popularImageText}>{element.price}</Text>
-                                    </View>
+                    <FlatList
+                        data={ListaEmprendimientos.items[0].entrepreneurship}
+                        numColumns={2}
+                        renderItem={({ item }) => (
+                            <View style={styles.cartaProductoGeneral}>
+                                <Image
+                                    source={item.ruta} alt={item.title} size="2xl"
+                                    style={styles.productosGeneral}
+                                />
+                                <Text style={styles.textoCarta}>{item.title}</Text>
+                                <View style={styles.cajaPrecioGeneral}>
+                                    <Text style={styles.popularImageText}>{item.price}</Text>
                                 </View>
-                            )
-                        })}
-                    </View>
+                            </View>
+                        )}
+                    />
                 </View>
 
                 <View style={{ height: 100 }}>
