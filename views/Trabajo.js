@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Pressable, StatusBar, FlatList, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Pressable, StatusBar, FlatList, TextInput, ScrollView } from 'react-native';
 import { Image, NativeBaseProvider, Center } from "native-base";
 import Empleos from '../src/assets/data/Empleos';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -8,7 +8,7 @@ const Trabajo = () => {
     return (
         <NativeBaseProvider>
             <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
-            <View style={styles.cuerpo}>
+            <ScrollView style={styles.cuerpo}>
 
                 <Text style={styles.titulo}>Empleo</Text>
 
@@ -38,13 +38,17 @@ const Trabajo = () => {
                         renderItem={({ item }) => (
                             <View style={styles.empleo}>
                                 <Text style={styles.tituloEmpleo}>{item.title}</Text>
-                                <Text style={styles.subtituloEmpleo}>{item.company + '-' + item.location}</Text>
+                                <Text style={styles.subtituloEmpleo}>{item.company + ' - ' + item.location}</Text>
+                                <Text style={styles.horas}>{item.hours}</Text>
+                                <Text style={styles.salario}>{item.salary}</Text>
                                 <Text style={styles.añadirFiltro}>Información</Text>
                             </View>
                         )}
                     />
                 </View>
-            </View>
+                <View style={{ height: 60 }}>
+                </View>
+            </ScrollView>
         </NativeBaseProvider>
     )
 }
@@ -87,11 +91,21 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         color: 'black'
     },
+    subtituloEmpleo: {
+        fontSize: 10
+    },
     contenedorEmpleos: {
         backgroundColor: '#F4F4F4',
         margin: 30,
         borderRadius: 30,
         paddingTop: 15
+    },
+    horas: {
+        marginTop: 10
+    },
+    salario: {
+        fontWeight: '600',
+        marginBottom: 10
     },
     empleo: {
         backgroundColor: '#FFF',

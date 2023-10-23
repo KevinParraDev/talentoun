@@ -47,19 +47,6 @@ function Inicio() {
                 options={{
                     tabBarShowLabel: false,
                     tabBarIcon: ({ focused }) => (
-                        <FontAwesome5
-                            name="chalkboard-teacher"
-                            size={25}
-                            color={focused ? '#A259FF' : '#C2C2C2'}
-                        />
-                    )
-                }}
-                name='Asesorias' component={Asesorias}
-            />
-            <Tab.Screen
-                options={{
-                    tabBarShowLabel: false,
-                    tabBarIcon: ({ focused }) => (
                         <MaterialIcons
                             name="work"
                             size={25}
@@ -68,6 +55,19 @@ function Inicio() {
                     )
                 }}
                 name='Trabajo' component={Trabajo}
+            />
+            <Tab.Screen
+                options={{
+                    tabBarShowLabel: false,
+                    tabBarIcon: ({ focused }) => (
+                        <FontAwesome5
+                            name="chalkboard-teacher"
+                            size={25}
+                            color={focused ? '#A259FF' : '#C2C2C2'}
+                        />
+                    )
+                }}
+                name='Asesorias' component={Asesorias}
             />
             <Tab.Screen
                 options={{

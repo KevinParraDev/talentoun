@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Pressable, StatusBar, TextInput } from 'react-native';
-import { NativeBaseProvider, Center, Image, ScrollView } from "native-base";
+import { NativeBaseProvider, Center, Image, ScrollView, FlatList } from "native-base";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ListaEmprendimientos from '../src/assets/data/ListaEmprendimientos';
 
@@ -59,50 +59,53 @@ const Emprendimientos = () => {
 
                 <View>
                     <Text style={styles.titulosCategorias}>Popular</Text>
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                        {popularItems.map(element => {
-                            return (
-                                <View style={{ marginBottom: -50 }}>
-                                    <Image
-                                        source={element.ruta} alt={element.title} size="2xl"
-                                        style={styles.popularImage}
-                                    />
-                                    <View style={styles.cajaTextoPopular}>
-                                        <Text style={styles.popularImageText}>{element.title}</Text>
-                                    </View>
-                                    <View style={styles.cajaTextoPopular}>
-                                        <Text style={styles.popularImageText}>
-                                            <AntDesign
-                                                name="star"
-                                                size={15}
-                                                color='#F8D675'
-                                            />
-                                            {'  ' + element.stars}</Text>
-                                    </View>
+                    <FlatList
+                        data={ListaEmprendimientos.items[0].entrepreneurship}
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        renderItem={({ item }) => (
+                            <View style={{ marginBottom: -50 }}>
+                                <Image
+                                    source={item.ruta} alt={item.title} size="2xl"
+                                    style={styles.popularImage}
+                                />
+                                <View style={styles.cajaTextoPopular}>
+                                    <Text style={styles.popularImageText}>{item.title}</Text>
                                 </View>
-                            )
-                        })}
-                    </ScrollView>
+                                <View style={styles.cajaTextoPopular}>
+                                    <Text style={styles.popularImageText}>
+                                        <AntDesign
+                                            name="star"
+                                            size={15}
+                                            color='#F8D675'
+                                        />
+                                        {'  ' + item.stars}</Text>
+                                </View>
+                            </View>
+                        )}
+                    />
                 </View>
 
                 <View>
                     <Text style={styles.titulosCategorias}>Recomendado</Text>
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                        {popularItems.map(element => {
-                            return (
-                                <View style={styles.cartaProducto}>
-                                    <Image
-                                        source={element.ruta} alt={element.title} size="2xl"
-                                        style={styles.recomendadoImage}
-                                    />
-                                    <Text style={styles.textoCarta}>{element.title}</Text>
-                                    <View style={styles.cajaPrecio}>
-                                        <Text style={styles.popularImageText}>{element.price}</Text>
-                                    </View>
+                    <FlatList
+                        data={ListaEmprendimientos.items[0].entrepreneurship}
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        renderItem={({ item }) => (
+                            <View style={styles.cartaProducto}>
+                                <Image
+                                    source={item.ruta} alt={item.title} size="2xl"
+                                    style={styles.recomendadoImage}
+                                />
+                                <Text style={styles.textoCarta}>{item.title}</Text>
+                                <View style={styles.cajaPrecio}>
+                                    <Text style={styles.popularImageText}>{item.price}</Text>
                                 </View>
-                            )
-                        })}
-                    </ScrollView>
+                            </View>
+                        )}
+                    />
+
                 </View>
 
                 <View>
