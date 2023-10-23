@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Pressable, StatusBar, TextInput } from 'react-native';
 import { NativeBaseProvider, Center, Image, ScrollView } from "native-base";
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import ListaEmprendimientos from '../src/assets/data/ListaEmprendimientos';
 
 const popularItems = [
     {
@@ -38,7 +39,6 @@ const popularItems = [
 const Emprendimientos = () => {
     return (
         <NativeBaseProvider>
-            <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
             <ScrollView style={styles.cuerpo}>
                 <Text style={styles.titulo}>Emprendimientos</Text>
 
@@ -107,19 +107,29 @@ const Emprendimientos = () => {
 
                 <View>
                     <Text style={styles.titulosCategorias}>Todo</Text>
-                    <ScrollView showsHorizontalScrollIndicator={false}>
+                    <View style={styles.contenedorGeneral}>
                         {popularItems.map(element => {
                             return (
-                                <Image
-                                    source={element.ruta} alt={element.title} size="2xl"
-                                    style={styles.recomendadoImage}
-                                />
+                                <View style={styles.cartaProductoGeneral}>
+                                    <Image
+                                        source={element.ruta} alt={element.title} size="2xl"
+                                        style={styles.productosGeneral}
+                                    />
+                                    <Text style={styles.textoCarta}>{element.title}</Text>
+                                    <View style={styles.cajaPrecioGeneral}>
+                                        <Text style={styles.popularImageText}>{element.price}</Text>
+                                    </View>
+                                </View>
                             )
                         })}
-                    </ScrollView>
+                    </View>
+                </View>
+
+                <View style={{ height: 100 }}>
                 </View>
 
             </ScrollView>
+            <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
         </NativeBaseProvider>
     )
 }
@@ -207,6 +217,30 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         bottom: 50,
         left: 10,
+        backgroundColor: '#488C5C',
+        borderRadius: 15,
+        padding: 5,
+        marginBottom: 5
+    },
+    contenedorGeneral: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center'
+    },
+    productosGeneral: {
+        borderRadius: 30,
+        height: 150,
+        width: 180,
+        margin: 10
+    },
+    cartaProductoGeneral: {
+        borderRadius: 30,
+    },
+    cajaPrecioGeneral: {
+        alignSelf: 'flex-start',
+        bottom: 55,
+        left: 20,
         backgroundColor: '#488C5C',
         borderRadius: 15,
         padding: 5,
